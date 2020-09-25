@@ -1,4 +1,6 @@
-# MongoDB - Mongoose One-to-Many relationship example
+![demo](demo.png)
+
+# MongoDB - Mongoose Many-to-Many relationship example
 
 For more detail, please visit:
 > [MongoDB Many-to-Many relationship tutorial with Mongoose examples](https://bezkoder.com/mongodb-many-to-many-mongoose/)
