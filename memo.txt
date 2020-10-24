@@ -1,0 +1,35 @@
+*** MONGO SERVER
+B1:
+.../mongodb-win32-x86_64-2012plus-4.2.8/bin$./mongod.exe --dbpath /f/DoTQ/DoTQPrivate/src/MongoDB/Server
+B2: http://localhost:27017/
+*** MONGO CLIENT
+B3:
+.../mongodb-win32-x86_64-2012plus-4.2.8/bin$./mongo.exe
+B4: show dbs
+=>
+local       0.000GB
+myDatabase  0.000GB
+B5: use local>show collections
+=>
+startup_log
+test
+B6(SEL): db.test.find()
+=>
+{ "_id" : ObjectId("5f09e8ef4f8779deeabc4dd9"), "name" : "teo", "age" : 22 }
+B7(INS): db.test.insert({"name": "test", "age":69})
+=>
+WriteResult({ "nInserted" : 1 })
+B8(DEL): db.test.remove({"name": "test"})
+=>
+WriteResult({ "nRemoved" : 1 })
+ 
+======================================== copy paste from Atlas > connect cluster from app
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://root:<password>@cluster0.lrc9z.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
